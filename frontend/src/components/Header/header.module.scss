@@ -1,0 +1,25 @@
+@import '../../styles/App.scss';
+
+
+.darkTheme {
+    /*
+    background-color:  $black-dark;
+    color: $white-custom;*/
+}   
+
+.logo {
+    padding: {
+        left: 10px;
+        right: 10px;
+    }
+}
+
+.item {
+    /*
+    color: $white-custom;
+
+    */
+    text-transform: uppercase;
+    font-family: 'Montserrat', sans-serif;
+    
+}

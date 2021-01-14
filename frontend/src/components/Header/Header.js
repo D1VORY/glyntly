@@ -7,7 +7,7 @@ function Header(){
     const [active, setActive] = useState(false)
 
     return (
-        <nav className={`navbar ${styles.darkTheme}`} role="navigation" aria-label="main navigation">
+        <nav className={`navbar  is-fixed-top ${styles.darkTheme}`} role="navigation" aria-label="main navigation">
             <div className="navbar-brand">
                 <a className={`${styles.logo}`} href="#">
                 <img src="/images/logo-gl2.png" width="150" />
@@ -61,8 +61,8 @@ function Header(){
                         <div className="field">
                              <p className="control has-icons-left">
                                 <input className="input" type="text" placeholder="Search"/>
-                                <span class="icon is-small is-left">
-                                    <i class="fas fa-search"></i>
+                                <span className="icon is-small is-left">
+                                    <i className="fas fa-search"></i>
                                 </span>
                              </p>
                         </div>

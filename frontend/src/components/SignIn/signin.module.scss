@@ -1,0 +1,26 @@
+//@import "bourbon";
+
+
+.mainContainer {
+    max-width: 640px ;
+    //max-height: fit-content;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.imageContainer {
+    display: inherit;
+    justify-content: center;
+}
+
+.logoImage {
+    width: 60%;
+}
+
+
+@mixin grid($column) {
+  width:(100% / 12) * $column;
+  margin:0 auto;
+}
+

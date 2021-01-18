@@ -1,0 +1,113 @@
+@import '../../styles/App.scss';
+
+// Transition Ease
+@mixin ease($time:333ms, $attr:all, $curve:ease-in-out) {
+    -webkit-transition: $attr $time $curve;
+    -moz-transition: $attr $time $curve;
+    -o-transition: $attr $time $curve;
+    -ms-transition: $attr $time $curve;
+    transition: $attr $time $curve;
+}
+
+
+
+// Colors
+$blue:#313A3D;
+$orange:#FD9638;
+$dark-orange:darken($orange, 20%);
+$grey:#B6B6B6;
+$light-grey:lighten($grey, 15%);
+
+$background:#efefef;
+$field-color:#E8E9EA;
+
+$border-radius: 20px;
+
+
+.field {
+        width:100%;
+        position:relative;
+        
+
+        $hover-label-width:18%;
+        $placeholder-bumper:1.5%;
+        $label-padding:18px;
+
+        
+        // Label
+        label {
+            text-transform: uppercase;
+            text-align: center;
+            position:absolute;
+            top:0;
+            left:0;
+            background:$black-dark;
+            width:100%;
+            padding:($label-padding + 0px) 0;
+            border-radius: $border-radius;
+            //font-size: 1.45em;
+            letter-spacing: 0.075em;
+            color: $grey;
+            @include ease(333ms);
+
+            // Checkmark
+            + span {
+                    font-family: 'SSStandard';
+                    opacity: 0;
+                    color:white;
+                    display: block;
+                    position:absolute;
+                    top: 12px;
+                    left: 7%;
+                    font-size: 2.5em;
+                    text-shadow:1px 2px 0 $dark-orange;
+
+                    @include ease(333ms);
+            }
+        }
+
+        // Fields
+        input,
+        textarea {
+            border:none;
+            border-radius: $border-radius;
+            background:$field-color;
+            width:100% ; //this changed
+            margin:0;
+            padding:$label-padding 0;
+            padding-left:$hover-label-width + $placeholder-bumper;
+            color:$blue;
+            font-size: 1.4em;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+
+            // Focus and JS Toggle Class
+            &:focus,
+            &.focused {
+                    outline:none;
+
+                    + label {
+                        width:$hover-label-width;
+                        background:$pink-darker;
+                        color:$black-dark;
+                    }
+            }
+
+            // JS Toggle Class
+            &.focused {
+                    + label {
+                        color: $pink;
+                    }
+            }
+        }
+
+        // Field Hover
+        &:hover {
+            label {
+                    width:$hover-label-width;
+                   // background:$black-dark;
+                    color:white;
+            }
+        }
+}
+

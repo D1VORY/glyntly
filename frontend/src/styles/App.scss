@@ -13,7 +13,8 @@
 $black-dark: #1B1B1B;
 $white-custom: #eeeded;
 $gray-hover: #A8A8A8;
-$purple: #6c1aaf;
+$pink: #F648BA;
+$pink-darker:  #c53994;
    
 
 
@@ -30,7 +31,9 @@ $navbar-dropdown-background-color: $black-dark;
 //card vars
 //$card-shadow: none;
 
-
+body {
+    font-family: 'Montserrat', 'Oswald', 'sans-serif';
+}
 
 
 

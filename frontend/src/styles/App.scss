@@ -17,6 +17,14 @@ $pink: #F648BA;
 $pink-darker:  #c53994;
    
 
+//font primary
+$family-primary: 'Montserrat';
+body {
+    font-family: 'Montserrat', 'Oswald', 'sans-serif';
+}
+
+
+
 
 //navbar vars
 $navbar-background-color: $black-dark;
@@ -31,9 +39,6 @@ $navbar-dropdown-background-color: $black-dark;
 //card vars
 //$card-shadow: none;
 
-body {
-    font-family: 'Montserrat', 'Oswald', 'sans-serif';
-}
 
 
 

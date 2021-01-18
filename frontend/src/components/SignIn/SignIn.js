@@ -16,6 +16,10 @@ export default function SignIn(){
                 <img className={ styles.logoImage} src="/images/logo-gl2.png" alt="" />              
             </div>
 
+            <p>
+                Sign In
+            </p>
+
             <div className="formContainer">
                 <form action="" className="form">
                     
@@ -26,16 +30,19 @@ export default function SignIn(){
                         placeholder="E-mail" 
                         type="email" 
                         required
-                    />
+                    >
+                        <i class="fa fa-envelope" aria-hidden="true"></i>
+                    </TextInput>
                    
                    <TextInput 
-                        {...passwordProps} 
-                        id = "passwordInput" 
-                        label="password" 
-                        placeholder="Password" 
-                        type="password" 
-                        required
-                    />
+                            {...passwordProps} 
+                            id = "passwordInput" 
+                            label="password" 
+                            placeholder="Password" 
+                            type="password" 
+                            required>
+                        <i className="fa fa-lock " aria-hidden="true"></i>
+                    </TextInput>
                     
 
                     <input type="button" value="Login" onClick={() => console.log(emailProps)}/>

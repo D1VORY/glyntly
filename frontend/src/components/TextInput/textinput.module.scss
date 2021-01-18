@@ -24,6 +24,8 @@ $field-color:#E8E9EA;
 $border-radius: 20px;
 
 
+
+
 .field {
         width:100%;
         position:relative;
@@ -33,6 +35,9 @@ $border-radius: 20px;
         $placeholder-bumper:1.5%;
         $label-padding:18px;
 
+        .labelIcon {
+            display: none;
+        }
         
         // Label
         label {
@@ -45,25 +50,13 @@ $border-radius: 20px;
             width:100%;
             padding:($label-padding + 0px) 0;
             border-radius: $border-radius;
-            //font-size: 1.45em;
+            font-size: 1.2em;
             letter-spacing: 0.075em;
             color: $grey;
             @include ease(333ms);
 
-            // Checkmark
-            + span {
-                    font-family: 'SSStandard';
-                    opacity: 0;
-                    color:white;
-                    display: block;
-                    position:absolute;
-                    top: 12px;
-                    left: 7%;
-                    font-size: 2.5em;
-                    text-shadow:1px 2px 0 $dark-orange;
 
-                    @include ease(333ms);
-            }
+            
         }
 
         // Fields
@@ -85,29 +78,62 @@ $border-radius: 20px;
             &:focus,
             &.focused {
                     outline:none;
-
+                   
                     + label {
                         width:$hover-label-width;
                         background:$pink-darker;
                         color:$black-dark;
+
+                        .labelText{
+                            display: none;
+                        }
+
+                        .labelIcon {
+                            display: inline;
+                        }
                     }
+
+                   
+
             }
 
             // JS Toggle Class
             &.focused {
                     + label {
                         color: $pink;
+
+                        .labelText{
+                            display: none;
+                        }
+
+                        .labelIcon {
+                            display: inline;
+                        }
                     }
+
+                   
             }
         }
 
         // Field Hover
         &:hover {
+            
+
             label {
                     width:$hover-label-width;
                    // background:$black-dark;
                     color:white;
+
+                    .labelText{
+                        display: none;
+                    }
+
+                    .labelIcon {
+                        display: inline;
+                    }
             }
+
+            
         }
 }
 

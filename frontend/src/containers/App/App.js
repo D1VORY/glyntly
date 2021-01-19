@@ -1,14 +1,15 @@
 import Header from '../../components/Header';
 import GoodsTable from '../GoodsTable';
 
-import SignIn from '../../components/SignIn';
+import AuthController from '../AuthController';
 
 function App() {
   return (
     <div>
       <Header />
        { /*<GoodsTable /> */ }
-       <SignIn />
+      
+      <AuthController />
     </div>
   );
 }

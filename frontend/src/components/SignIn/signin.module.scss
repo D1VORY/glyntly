@@ -1,5 +1,4 @@
-//@import "bourbon";
-
+@import '../../styles/App.scss';
 
 .mainContainer {
     max-width: 640px ;
@@ -18,9 +17,36 @@
     width: 60%;
 }
 
+.mainHeader {
+    font-size: 36px;
+    font-weight: 300;
 
-@mixin grid($column) {
-  width:(100% / 12) * $column;
-  margin:0 auto;
+    margin: 20px 0px;
 }
 
+.myButton {
+    width: 100%;
+    background-color: $pink;
+    font-size: 1.4em;
+    color: $white-custom;
+    font-weight: 600;
+    letter-spacing: 0.075em;
+    border-radius: 40px;
+
+
+    &:hover {
+        background-color: $pink-darker;
+        color: $gray-hover
+    }
+}
+
+.basicText {
+    font-size: 1.1em;
+}
+
+.socialButton{
+    border-radius: 100%;
+    border:none;
+    box-shadow: 4px 4px 10px;
+    margin: 10px;
+}

@@ -33,7 +33,8 @@ $border-radius: 20px;
 
         $hover-label-width:18%;
         $placeholder-bumper:1.5%;
-        $label-padding:18px;
+        $label-padding:10px;
+        $input-padding: 15px;
 
         .labelIcon {
             display: none;
@@ -48,9 +49,16 @@ $border-radius: 20px;
             left:0;
             background:$black-dark;
             width:100%;
-            padding:($label-padding + 0px) 0;
+            //padding:($label-padding + 0px) 0;
+            padding: {
+                top:$label-padding;
+                bottom: ($label-padding +1px);
+                left: 0px;
+                right: 0px;
+            }
+
             border-radius: $border-radius;
-            font-size: 1.2em;
+            font-size: 1em;
             letter-spacing: 0.075em;
             color: $grey;
             @include ease(333ms);
@@ -67,10 +75,10 @@ $border-radius: 20px;
             background:$field-color;
             width:100% ; //this changed
             margin:0;
-            padding:$label-padding 0;
+            padding:$input-padding 0;
             padding-left:$hover-label-width + $placeholder-bumper;
             color:$blue;
-            font-size: 1.4em;
+            font-size: 0.8em;
             letter-spacing: 0.05em;
             text-transform: uppercase;
 

@@ -16,11 +16,11 @@ export default function SignIn(){
                 <img className={ styles.logoImage} src="/images/logo-gl2.png" alt="" />              
             </div>
 
-            <p>
+            <p className={styles.mainHeader}>
                 Sign In
             </p>
 
-            <div className="formContainer">
+            <div className="block formContainer">
                 <form action="" className="form">
                     
                     <TextInput 
@@ -40,14 +40,59 @@ export default function SignIn(){
                             label="password" 
                             placeholder="Password" 
                             type="password" 
-                            required>
+                            required
+                    >
                         <i className="fa fa-lock " aria-hidden="true"></i>
                     </TextInput>
                     
 
-                    <input type="button" value="Login" onClick={() => console.log(emailProps)}/>
+                    <div className="control">
+                        <button className={`button ${styles.myButton}`}>
+                            Login
+                        </button>
+                    </div>
 
                 </form>
+            </div>
+
+
+            <div className={`block ${styles.socialAuthContainer} `}>
+                <p className={`${styles.basicText} has-text-centered`}>
+                    or sing in with:
+                </p>
+
+                <div className={`block container is-flex is-justify-content-center ${styles.buttonsContainer}` }>
+                     
+                        <button className={`button ${styles.socialButton}`}>
+                            <span className="icon is-small">
+                                <img src="images/facebook-icon.svg" alt=""/>
+                            </span>
+                        </button>
+                    
+
+                    
+                        <button className={`button ${styles.socialButton}`}>
+                            <span className="icon is-small">
+                                <img src="images/google-icon.svg" alt=""/>
+                            </span>
+                        </button>
+                   
+
+                    
+                        <button className={`button ${styles.socialButton}`}>
+                            <span className="icon is-small">
+                                <img src="images/twitter-icon.svg" alt=""/>
+                            </span>
+                        </button>
+                    
+                </div>
+
+
+                <div className="block is-flex is-justify-content-space-between">
+                    <p className={styles.basicText}>Don't have an account?</p>
+                    <p className={`$(styles.basicText} has-text-right`}>Forgot password?</p>
+                </div>
+
             </div>
         </div>
     )

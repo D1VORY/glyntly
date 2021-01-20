@@ -9,12 +9,10 @@ export default function AuthController(){
 
 
     const [visibleComponent, setVisibleComponent] = useState('signin');
-    // if visibleCmponent === 0, then show SignIn component
-    // if visibleCmponent === 1, then show SignUp component
+    // if visibleCmponent === signin, then show SignIn component
+    // if visibleCmponent === signup, then show SignUp component
 
     const changeVisibleComponent = (componentName) => setVisibleComponent(componentName) 
-
-    
 
     return(
         <>

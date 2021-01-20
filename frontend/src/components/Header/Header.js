@@ -1,12 +1,19 @@
-import React, {useState} from 'react'
+import React, {useState} from 'react';
 //import logo from '../../../public/images/logo-gl.png'
-import styles from './header.module.scss'
+import Modal from '../Modal';
+import AuthController from '../../containers/AuthController'
+
+import {useModal} from '../../utilities/CustomHooks'
+import styles from './header.module.scss';
 
 
 function Header(){
-    const [active, setActive] = useState(false)
+    const [active, setActive] = useState(false);
+
+    const [isOpened, openModal, closeModal] = useModal(false);
 
     return (
+        <>
         <nav className={`navbar  is-fixed-top ${styles.darkTheme}`} role="navigation" aria-label="main navigation">
             <div className="navbar-brand">
                 <a className={`${styles.logo}`} href="#">
@@ -68,17 +75,40 @@ function Header(){
                         </div>
                     </div>
 
-                    <a className={`navbar-item ${styles.item}`}>
-                            Sign in 
-                    </a>
+                    <div className="navbar-item">
+                        <p class="control">
+                            <button class="button "  onClick={openModal}>
+                                <span class="icon">
+                                    <i class="fas fa-user"></i>
+                                </span>
+                                <span>Account</span>
+                            </button>
+                        </p>
 
-                    <a className={`navbar-item ${styles.item}`}>
-                        Sign up
-                    </a>
+                    </div>
+
+                    <div className="navbar-item">
+                        <p class="control">
+                            <button class="button ">
+                                <span class="icon">
+                                    <i class="fas fa-shopping-cart"></i>
+                                </span>
+                                <span>Cart</span>
+                            </button>
+                        </p>
+                    </div>
+                   
                 </div>
 
             </div>
         </nav>
+
+        <Modal {...{isOpened,closeModal}}>
+            <AuthController />
+
+        </Modal>
+
+        </>
     )
 }
 export default Header;

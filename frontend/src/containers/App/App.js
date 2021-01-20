@@ -1,13 +1,13 @@
+import React from "react";
 import Header from '../../components/Header';
-import GoodsTable from '../GoodsTable';
-
-
+import Routes from './routes';
 
 function App() {
   return (
     <div>
       <Header />
-      <GoodsTable /> 
+     
+      <Routes />
       
      
     </div>

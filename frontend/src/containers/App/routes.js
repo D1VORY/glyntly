@@ -6,6 +6,8 @@ import {
     Route,
 } from "react-router-dom";
 import GoodsTable from '../GoodsTable';
+import ProductDetails from '../../components/ProductDetails';
+
 
 export default function Routes(){
 
@@ -14,6 +16,10 @@ export default function Routes(){
             <Switch>
                 <Route exact path="/">
                     <GoodsTable />
+                </Route>
+
+                <Route path="/product/:name" >
+                    <ProductDetails />
                 </Route>
             </Switch>
         </Router>

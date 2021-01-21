@@ -2,12 +2,13 @@ import React, {useState} from 'react';
 import TextInput from '../TextInput';
 import { useInput } from '../../utilities/CustomHooks';
 
-import styles from './signin.module.scss';
+import styles from './signup.module.scss';
 
-export default function SignIn({changeVisibleComponent}){
+
+export default function SignUp({changeVisibleComponent}){
     const [emailProps, resetEmail] = useInput("");
-    const [passwordProps, resetPassword] = useInput("")
-
+    const [password1Props, resetPassword1] = useInput("")
+    const [password2Props, resetPassword2] = useInput("")
 
     return (
         <div className={`box ${styles.mainContainer}`}>
@@ -17,7 +18,7 @@ export default function SignIn({changeVisibleComponent}){
             </div>
 
             <p className={styles.mainHeader}>
-                Sign In
+                Sign Up
             </p>
 
             <div className="block formContainer">
@@ -33,12 +34,23 @@ export default function SignIn({changeVisibleComponent}){
                     >
                         <i class="fa fa-envelope" aria-hidden="true"></i>
                     </TextInput>
-                   
-                   <TextInput 
-                            {...passwordProps} 
-                            id = "passwordInput" 
-                            label="password" 
+                
+                    <TextInput 
+                            {...password1Props} 
+                            id = "passwordInput1" 
+                            label="password 1" 
                             placeholder="Password" 
+                            type="password" 
+                            required
+                    >
+                        <i className="fa fa-lock " aria-hidden="true"></i>
+                    </TextInput>
+
+                    <TextInput 
+                            {...password2Props} 
+                            id = "passwordInput2" 
+                            label="password 2" 
+                            placeholder="Repeat password" 
                             type="password" 
                             required
                     >
@@ -48,7 +60,7 @@ export default function SignIn({changeVisibleComponent}){
 
                     <div className="control">
                         <button className={`button ${styles.myButton}`}>
-                            Login
+                            Register
                         </button>
                     </div>
 
@@ -58,11 +70,11 @@ export default function SignIn({changeVisibleComponent}){
 
             <div className={`block ${styles.socialAuthContainer} `}>
                 <p className={`${styles.basicText} has-text-centered`}>
-                    or sing in with:
+                    or sing up with:
                 </p>
 
                 <div className={`block container is-flex is-justify-content-center ${styles.buttonsContainer}` }>
-                     
+                    
                         <button className={`button ${styles.socialButton}`}>
                             <span className="icon is-small">
                                 <img src="images/facebook-icon.svg" alt=""/>
@@ -76,7 +88,7 @@ export default function SignIn({changeVisibleComponent}){
                                 <img src="images/google-icon.svg" alt=""/>
                             </span>
                         </button>
-                   
+                
 
                     
                         <button className={`button ${styles.socialButton}`}>
@@ -91,13 +103,15 @@ export default function SignIn({changeVisibleComponent}){
                 <div className="block is-flex is-justify-content-space-between">
                     <p 
                         className={`${styles.basicText} ${styles.link}`}
-                        onClick= {() => changeVisibleComponent('signup') }
+                        onClick= {() => changeVisibleComponent('signin') }
                     >
-                        Don't have an account?</p>
+                        Already have an account?</p>
                     <p className={`$(styles.basicText} has-text-right`}>Forgot password?</p>
                 </div>
 
             </div>
         </div>
     )
+    
 }
+

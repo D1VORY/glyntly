@@ -26,9 +26,10 @@ class Sneaker(models.Model):
 
     class Meta:
         verbose_name = "Sneaker"
-        indexes = [
-            models.Index(fields=['id'], name='id_index')
-        ]
+
+    @property
+    def available_sizes_list(self):
+        return [variant.size for variant in self.variants.all()]
 
     def __str__(self):
         return f"{self.name}"

@@ -7,3 +7,12 @@ export const useInput = initialValue => {
         () => setValue(initialValue)
     ];
 }
+
+export const useModal = initialValue => {
+    const [value, setValue] = useState(initialValue);
+    return[
+        value,
+        () => setValue(true), //open modal
+        () => setValue(false) // close modal
+    ]
+}

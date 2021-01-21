@@ -4,7 +4,7 @@ from .sneaker import Sneaker
 
 class SneakerVariant(models.Model):
     size = models.SmallIntegerField()
-    sneaker = models.ForeignKey(to=Sneaker, on_delete=models.CASCADE, related_name='sneaker_variants')
+    sneaker = models.ForeignKey(to=Sneaker, on_delete=models.CASCADE, related_name='variants')
 
     class Meta:
         verbose_name = "SneakerVariant"

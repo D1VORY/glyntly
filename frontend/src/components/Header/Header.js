@@ -1,9 +1,9 @@
 import React, {useState} from 'react';
 //import logo from '../../../public/images/logo-gl.png'
 import Modal from '../Modal';
-import AuthController from '../../containers/AuthController'
+import AuthController from '../../containers/AuthController';
 
-import {useModal} from '../../utilities/CustomHooks'
+import {useModal} from '../../utilities/CustomHooks';
 import styles from './header.module.scss';
 
 

@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/3.1/ref/settings/
 """
 
 from pathlib import Path
+from datetime import timedelta
 import environ
 import os
 
@@ -20,6 +21,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 env = environ.Env(
     DEBUG=(bool, False),
     SECRET_KEY=(str, ''),
+    JWT_SECRET_KEY=(str, ''),
     CORS_ORIGIN_ALLOW_ALL=(bool, False),
     DB_MAIN_NAME=(str, 'postgres'),
     DB_MAIN_HOST=(str, 'db'),
@@ -45,7 +47,9 @@ DEBUG = env('DEBUG')
 ALLOWED_HOSTS = []
 
 
+
 # Application definition
+# ------------------------------------------------------------------------------
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -79,6 +83,20 @@ CORS_ORIGIN_ALLOW_ALL = env('CORS_ORIGIN_ALLOW_ALL')
 
 ROOT_URLCONF = 'glyntly_project.urls'
 
+WSGI_APPLICATION = 'glyntly_project.wsgi.application'
+
+REST_FRAMEWORK = {
+    'DEFAULT_PERMISSION_CLASSES': (
+        'rest_framework.permissions.IsAuthenticated',
+        #'rest_framework.permissions.AllowAll',
+    ),
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework_simplejwt.authentication.JWTAuthentication',
+    ),
+}
+
+# TEMPLATES
+# ------------------------------------------------------------------------------
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
@@ -95,10 +113,8 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'glyntly_project.wsgi.application'
-
-
-# Database
+# DATABASE
+# ------------------------------------------------------------------------------
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
 
 DATABASES = {
@@ -112,8 +128,25 @@ DATABASES = {
     }
 }
 
+# AUTHENTICATION AND AUTHORISATION
+# ------------------------------------------------------------------------------
 
 AUTH_USER_MODEL = 'users.CustomUser'
+
+SIMPLE_JWT = {
+    'ACCESS_TOKEN_LIFETIME': timedelta(minutes=5),
+    'REFRESH_TOKEN_LIFETIME': timedelta(days=14),
+    'ROTATE_REFRESH_TOKENS': True,
+    'BLACKLIST_AFTER_ROTATION': False,
+    'ALGORITHM': 'HS256',
+    'SIGNING_KEY': env('JWT_SECRET_KEY'),
+    'VERIFYING_KEY': None,
+    'AUTH_HEADER_TYPES': ('Bearer', 'JWT',),
+    'USER_ID_FIELD': 'id',
+    'USER_ID_CLAIM': 'user_id',
+    'AUTH_TOKEN_CLASSES': ('rest_framework_simplejwt.tokens.AccessToken',),
+    'TOKEN_TYPE_CLAIM': 'token_type',
+}
 
 # Password validation
 # https://docs.djangoproject.com/en/3.1/ref/settings/#auth-password-validators
@@ -135,6 +168,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 
 # Internationalization
+# ------------------------------------------------------------------------------
 # https://docs.djangoproject.com/en/3.1/topics/i18n/
 
 LANGUAGE_CODE = 'en-us'
@@ -149,6 +183,7 @@ USE_TZ = True
 
 
 # Static files (CSS, JavaScript, Images)
+# ------------------------------------------------------------------------------
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
 STATIC_URL = '/static/'

@@ -1,14 +1,47 @@
 import React, {useState} from 'react';
 import TextInput from '../TextInput';
+import { useDispatch } from 'react-redux';
+
+import { setTokens } from '../../redux/slices/authSlice';
 import { useInput } from '../../utilities/CustomHooks';
-
 import styles from './signup.module.scss';
+import { register } from '../../network/auth';
 
-
-export default function SignUp({changeVisibleComponent}){
+export default function SignUp({changeVisibleComponent, closeModal}){
     const [emailProps, resetEmail] = useInput("");
     const [password1Props, resetPassword1] = useInput("")
     const [password2Props, resetPassword2] = useInput("")
+    const [error, setError] = useState(null);
+    const dispatch = useDispatch();
+
+    const onRegisterClick = async event => {
+        event.preventDefault();
+        //check if passwords are good
+        //TODO: vallidate passwords
+
+        try{
+            const resp = await register(emailProps.value, password1Props.value);
+
+            const accessToken = resp.access;
+            const refreshToken = resp.refresh;
+            dispatch(setTokens({accessToken, refreshToken}));
+            
+          
+            closeModal();
+
+        }catch(error){
+           // console.log("Error: ", JSON.stringify(error, null, 4));
+            const { status, data } = error.response;
+            
+            if( status === 400){
+                //set error as the first value of object
+                setError(`${Object.keys(data)[0]} : ${data[Object.keys(data)[0]]}` );
+                console.log(error.response);
+            }else{
+                setError('Something went wrong, try again later');
+            }
+        }
+    }
 
     return (
         <div className={`box ${styles.mainContainer}`}>
@@ -22,7 +55,7 @@ export default function SignUp({changeVisibleComponent}){
             </p>
 
             <div className="block formContainer">
-                <form action="" className="form">
+                <form  className="form">
                     
                     <TextInput 
                         {...emailProps} 
@@ -32,7 +65,7 @@ export default function SignUp({changeVisibleComponent}){
                         type="email" 
                         required
                     >
-                        <i class="fa fa-envelope" aria-hidden="true"></i>
+                        <i className="fa fa-envelope" aria-hidden="true"></i>
                     </TextInput>
                 
                     <TextInput 
@@ -59,7 +92,7 @@ export default function SignUp({changeVisibleComponent}){
                     
 
                     <div className="control">
-                        <button className={`button ${styles.myButton}`}>
+                        <button className={`button ${styles.myButton}`} onClick={onRegisterClick}>
                             Register
                         </button>
                     </div>
@@ -67,6 +100,10 @@ export default function SignUp({changeVisibleComponent}){
                 </form>
             </div>
 
+            {error &&   <p className="block  is-size-5 has-text-centered has-background-danger-light has-text-danger">
+                                    {error}
+                                </p>
+                    }
 
             <div className={`block ${styles.socialAuthContainer} `}>
                 <p className={`${styles.basicText} has-text-centered`}>

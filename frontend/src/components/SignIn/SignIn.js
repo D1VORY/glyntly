@@ -10,7 +10,7 @@ import { login } from '../../network/auth';
 export default function SignIn({changeVisibleComponent, closeModal}){
     const [emailProps, resetEmail] = useInput("");
     const [passwordProps, resetPassword] = useInput("");
-    const [error, setError] = useState(null)
+    const [error, setError] = useState(null);
     const dispatch = useDispatch();
 
 

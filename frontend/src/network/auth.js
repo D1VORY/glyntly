@@ -7,8 +7,8 @@ export async function login(email, password){
     const response = await axiosInstance.post(
         '/token/obtain/', 
         {
-            email: email,
-            password: password
+            email,
+            password
         }
     )
     .then(
@@ -25,12 +25,12 @@ export async function login(email, password){
     return response;
 }
 
-export async function register(email, password1, password2){
+export async function register(email, password){
     const response = await axiosInstance.post(
-        '/token/obtain/', 
+        '/users/create/', 
         {
-            email: email,
-            password: password
+            email,
+            password
         }
     )
     .then(

@@ -76,10 +76,10 @@ function Header(){
                     </div>
 
                     <div className="navbar-item">
-                        <p class="control">
-                            <button class="button "  onClick={openModal}>
-                                <span class="icon">
-                                    <i class="fas fa-user"></i>
+                        <p className="control">
+                            <button className="button "  onClick={openModal}>
+                                <span className="icon">
+                                    <i className="fas fa-user"></i>
                                 </span>
                                 <span>Account</span>
                             </button>
@@ -88,10 +88,10 @@ function Header(){
                     </div>
 
                     <div className="navbar-item">
-                        <p class="control">
-                            <button class="button ">
-                                <span class="icon">
-                                    <i class="fas fa-shopping-cart"></i>
+                        <p className="control">
+                            <button className="button ">
+                                <span className="icon">
+                                    <i className="fas fa-shopping-cart"></i>
                                 </span>
                                 <span>Cart</span>
                             </button>
@@ -104,7 +104,7 @@ function Header(){
         </nav>
 
         <Modal {...{isOpened,closeModal}}>
-            <AuthController />
+            <AuthController {...{closeModal}}/>
 
         </Modal>
 

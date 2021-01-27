@@ -9,7 +9,7 @@ function GoodsTable(){
     //const [goods, setGoods] = useState(goodsData.data)
    
     //setGoods(kek.fill(goodsData.data[0]));
-    console.log(goods);
+    //console.log(goods);
     return(
         <div className={styles.container}>
             {

@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import SignIn from '../../components/SignIn';
 import SignUp from '../../components/SignUp';
 
-export default function AuthController(){
+export default function AuthController({closeModal}){
     /**
      * choses what component to render - SignIn or SignUp
      */
@@ -18,8 +18,8 @@ export default function AuthController(){
         <>
         {
           {
-              'signin': <SignIn {...{changeVisibleComponent}}/>,
-              'signup' : <SignUp {...{changeVisibleComponent}}/>
+              'signin': <SignIn {...{changeVisibleComponent, closeModal}}/>,
+              'signup' : <SignUp {...{changeVisibleComponent, closeModal}}/>
           }[visibleComponent] ||  <SignIn />
         }
         </>
